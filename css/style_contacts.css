@@ -145,7 +145,6 @@ table input {
 @media only screen and (max-width: 700px) {
 	.table {
 		display: block;
-		height: fit-content;
 	}
 	.table tbody {
 		display: block;
