@@ -59,7 +59,7 @@ if(!empty($result)){
 						foreach ($contacts as $contact) {
 							if ($type['id']==$contact['idType']) {
 								echo "<tr>";
-								echo "<td  class='sfield' onclick=copy(".$contact['id'].") id=b".$contact['id']."><input readonly id=i".$contact['id']." value=".phone($contact['value'])."><span>".phone($contact['value'])."</span>";
+								echo "<td  class='sfield' onclick=copy(".$contact['id'].") id=b".$contact['id']."><input readonly id=i".$contact['id']." value='".phone($contact['value'])."'><span>".phone($contact['value'])."</span>";
 								if (!empty($contact['type'])) echo " (".$contact['type'].")";
 								echo "</td>";
 								echo "</tr>";

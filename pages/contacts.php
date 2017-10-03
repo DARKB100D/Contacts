@@ -64,7 +64,7 @@ if(isset($_GET['id'])){
 							?>
 							<table class="table department printNoBreak" align="center">
 								<tr class="header hd sfield liho" id=<?php echo $department['id']?> onclick='showhide(this.id)'>
-									<th colspan="2" ><?php echo $department['name'];?><i class="fa fa-chevron-right" aria-hidden="true" style="float: right;"></i></th>
+									<th colspan="2" ><?php echo $department['name'];?>&nbsp;<i class="fa fa-chevron-right" aria-hidden="true" style="float: right;"></i></th>
 								</tr>
 								<?php 
 								$workers = $db->query("SELECT * FROM ?n WHERE idDepartment=?i  ORDER BY surname ASC", $table[2], $department['id']);
