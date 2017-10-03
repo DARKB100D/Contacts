@@ -3,8 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Контактная информация</title>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="./js/jquery-1.11.3.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../css/roboto.css">		
 		<link rel="stylesheet" href="../css/font-awesome.min.css">
 	</head>
 	<body>
@@ -20,7 +21,7 @@
 			
 			if(isset($_GET['id'])){
 				$idOrganization = $_GET['id'];
-				$organizations = $db ->query("SELECT * FROM ?n WHERE idOrganization=?i",$table[0],$idOrganization);
+				$organizations = $db ->query("SELECT * FROM ?n WHERE id=?i",$table[0],$idOrganization);
 				$rowCount = $organizations->num_rows;
 
 				if ($rowCount >= 1) { ?>
@@ -42,21 +43,21 @@
 							
 
 								<?php 
-								$workers = $db->query("SELECT * FROM ?n WHERE idOrganization=?i AND idDepartment=?i  ORDER BY surname ASC", $table[2], $idOrganization, $depatment['idDepartment']);
+								$workers = $db->query("SELECT * FROM ?n WHERE idOrganization=?i AND idDepartment=?i  ORDER BY surname ASC", $table[2], $idOrganization, $depatment['id']);
 								
 								foreach ($workers as $worker) { ?>
 								<tr class="tr">
 									<td><?php echo $worker['surname']." ".$worker['name']." ".$worker['middlename'];?></td>
-										<?php $contacts = $db->query("SELECT * FROM ?n WHERE idWorker=?i",$table[3],$worker['idWorker']);
+										<?php $contacts = $db->query("SELECT * FROM ?n WHERE idWorker=?i",$table[3],$worker['id']);
 										?>
 									<td>
 										<table align="left" >
 											<?php foreach ($contacts as $contact) { 
-													$types = $db->query("SELECT * FROM ?n WHERE idType=?i",$table[4],$contact['idType']);
+													$types = $db->query("SELECT * FROM ?n WHERE id=?i",$table[4],$contact['idType']);
 														foreach ($types as $type ) {
 													?>
 														<tr>
-															<td><?php echo $type['name'].": </td><td><input align=right id=i".$contact['idContact']." value=".$contact['value']." ></td><td><button id='i-have-a-tooltip' data-description='copy' onclick=copy(".$contact['idContact'].") id=b".$contact['idContact'].">"?> 
+															<td><?php echo $type['name'].": </td><td><input align=right id=i".$contact['id']." value=".$contact['value']." ></td><td><button id='i-have-a-tooltip' data-description='copy' onclick=copy(".$contact['id'].") id=b".$contact['id'].">"?> 
 																<i class="fa fa-clone fa-lg" aria-hidden="true"></i></button>
 															</td>
 														</tr>
