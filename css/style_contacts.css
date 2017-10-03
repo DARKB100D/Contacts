@@ -1,0 +1,202 @@
+body{
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+}
+
+.contactTable {
+	width: 100%;
+	font-size: 1em;
+	width: 15em;
+
+}
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid #ddd;
+	font-size: 1.3em;
+	margin: 0.5em 0 0.5em 0;
+}
+.table th, .table td {
+	text-align: left;
+	padding: 0.4em 1em 0.4em;
+	font-size: 1em;
+	margin: 2em;
+}
+.table th {
+	padding: 0.4em 1em 0.4em;
+}
+.table tr.sblock {
+	border-bottom: 1px solid #ddd;
+
+}
+.table tr.header {
+	background-color:  #f5f5f5;
+
+}
+.table tr.header:hover {
+	background-color: rgba(158,158,158,.2);
+	cursor: pointer
+
+}
+
+.bordertable {
+	width: 100%;
+	font-size: 0.8em;
+
+}
+.bordertable tr td input {
+	/*display: none;*/
+	float: right;
+	border: 0;
+	font-family: "Roboto", sans-serif;
+	font-size: 0.9em;
+	width: 0.1em;
+	color: white;
+}
+.bordeertable tr {
+	padding: 10px;
+}
+
+table.file td {							
+	text-align: left;
+	padding: 0px 0px 0px 15px;
+}
+
+button {
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: white;
+	width: 100%;
+	border: 0;
+	padding: 10px;
+	color: black;
+	font-size: 0.9em;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+}
+
+table input {
+	-webkit-user-select: none;
+	/* user-select -- это нестандартное свойство */
+	-moz-user-select: none;
+	/* поэтому нужны префиксы */
+	-ms-user-select: none;
+}
+.liho:hover {
+	background-color:  #f1f1f1;
+	cursor: pointer
+}
+/*print.css*/
+@media print {
+
+	.printHeader{
+		font-size: 17px;
+		display: block;
+		left: 0;
+		right: 0;
+		text-align: center;
+		position: absolute;
+	}
+	.header{
+		background-color: #f1f1f1 !important;
+
+	}
+	th i {
+		visibility:hidden;
+		/*display:none;*/
+	}
+	.printHide {
+		visibility:hidden;
+		display:none;
+	}
+	.hd {
+		visibility:hidden;
+		display:none;
+	}
+	mark {
+		background-color: transparent;
+	}
+	.mdl-layout{
+		overflow-y: visible;
+		overflow-x: visible;
+	}
+	.mdl-layout__content{
+		overflow-y: visible;
+		overflow-x: visible;
+	}
+	.table {
+		page-break-after: always;
+	}
+	.printNoBreak {
+		page-break-after: avoid !important;
+		margin: 0;
+	}
+
+}
+/*responsiveTable*/
+@media only screen and (max-width: 700px) {
+	.table {
+		display: block;
+	}
+	.table tbody {
+		display: block;
+	}
+	.table tr.sblock {
+		display: block;
+	}
+	.table tr.header.sfield {
+		display: block;
+	}
+	.table tr.header.sfield th{
+		display: block;
+		margin: 0;
+	}
+	.sblock > td.sfield {
+		display: block;
+		margin: 0.5em 0.2em 0 0.5em !important;
+	}
+	.sblock > td {
+		padding: 0 !important;
+	}
+	.mdl-cell {
+		margin: 0;
+		width: 100%;
+	}
+
+}
+
+/*alphabet list*/
+.mdl-list{
+	margin:0;
+	width: 100%; 
+
+}
+.listNav { margin:0 0 10px; }
+.ln-letters { overflow:hidden; 	justify-content: center;}
+.ln-letters a { font-size:0.9em; display:block; float:left; padding:2px 6px; border:1px solid silver; border-right:none; text-decoration:none; color: black; align-content: center; margin: 2px 0 0 0;}
+.ln-letters a.ln-last { border-right:1px solid silver; }
+.ln-letters a:hover,
+.ln-letters a.ln-selected { background-color:#eaeaea; }
+.ln-letters a.ln-disabled { color:#ccc; }
+.ln-letter-count { text-align:center; font-size:0.8em; line-height:1; margin-bottom:3px; color:#336699; }
+#myList-nav {
+	padding: 8px 16px 0;
+
+}
+
+/*search*/
+.results {
+	/*margin: 1em;*/
+	padding: 1em;
+}
+.pages {
+	padding: 0 1em 0 1em;
+}
+
+.content {
+	max-width: 750px;
+	justify-content: center;
+}
