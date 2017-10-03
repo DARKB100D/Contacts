@@ -1,5 +1,6 @@
 function phoneCheck(inp) {
-	inp.value = inp.value.replace(/[^\d+()-]*/g, '');
+	inp.value = inp.value.replace(/[^\d]*/g, '');
+	// inp.value = inp.value.replace(/[^\d+()-]*/g, '');
 }
 function emailCheck(inp) {
 	inp.value = inp.value.replace(/\s*/g,'');

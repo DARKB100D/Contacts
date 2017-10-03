@@ -71,7 +71,7 @@ function getChecked() {
 	var idArr = $("tbody .mdl-checkbox__input:checked").map(function(i, el) { return $(el).attr("id"); }).get();
 	return idArr;
 }function phoneCheck(inp) {
-	inp.value = inp.value.replace(/[^\d+()-]*/g, '');
+	inp.value = inp.value.replace(/[^\d]*/g, '');
 }
 function emailCheck(inp) {
 	inp.value = inp.value.replace(/\s*/g,'');
