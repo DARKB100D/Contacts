@@ -16,4 +16,5 @@ function phone($number){
 	else {
 		return $number;
 	}
-}?>
+}
+?>
