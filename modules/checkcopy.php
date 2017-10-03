@@ -17,7 +17,7 @@ foreach ($data{$table['tableName']} as $value{$table['tableName']}) {
 		} 
 	}
 	if ($idTable == 3) {
-		if ($value{$table['tableName']}['name']==$_POST['name'] && $value{$table['tableName']}['surname']==$_POST['surname'] && $value{$table['tableName']}['middlename']==$_POST['middlename'] && $value{$table['tableName']}[$col]==$val && $value{$table['tableName']}['id']!=$_POST['id']) {
+		if ($value{$table['tableName']}['name']==$_POST['name'] && $value{$table['tableName']}['surname']==$_POST['surname'] && $value{$table['tableName']}['middlename']==$_POST['middlename'] && $value{$table['tableName']}['role']==$_POST['role'] && $value{$table['tableName']}[$col]==$val && $value{$table['tableName']}['id']!=$_POST['id']) {
 			$js = array('error' => 'Сотрудник существует!','id' => $value{$table['tableName']}['id']);
 			echo json_encode($js);
 			exit();

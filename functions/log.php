@@ -87,7 +87,7 @@ function flog($operation) {
 		$db->query("INSERT INTO log SET ?u",$logs);
 		$log = $db->insertId();
 		umask(0);
-		mkdir($_SERVER['DOCUMENT_ROOT'].$way, 0777, true);
+		@mkdir($_SERVER['DOCUMENT_ROOT'].$way, 0777, true);
 		nextLog($id,$table['id']);
 		prevLog($id,($table['id']+1));
 		return 1;

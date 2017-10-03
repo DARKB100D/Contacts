@@ -1,10 +1,11 @@
 <?php 
 include_once '../functions/safemysql.class.php';	
 include_once '../functions/params.php';
+include_once '../functions/phoneFormat.php';
 $db = new SafeMysql(array('user'=>$user, 'pass'=>$pass, 'db'=>$base, 'charset'=>'utf8'));
 $table = array("organizations","departments","workers","contacts","types");
 $input = substr($_POST['input'], 0, 64);
-$input = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $input);
+$input = preg_replace("/[^\w\x7F-\xFF\s]/", "", $input);
 $limit = ($_POST['page']==0) ? "LIMIT ".$_POST['limit'] : "LIMIT ". $_POST['page']*$_POST['limit']. ", ".$_POST['limit'];
 $query = "SELECT `id` FROM search WHERE `text` LIKE '%".$input."%' GROUP BY `id` ".$limit;
 $result = $db->getCol($query);
@@ -18,12 +19,12 @@ if(!empty($result)){
 	$workers = $db->query("SELECT * FROM ?n WHERE id IN ($ids) ORDER BY surname ASC", $table[2]);
 	foreach ($workers as $worker) { ?>
 	<tr class="sblock">
-		<td class='sfield' ><?php echo $worker['surname']." ".$worker['name']." ".$worker['middlename']; if (!empty($worker['role'])) echo "<br>(".$worker['role'].")"?></td>
+		<td class='sfield' width="60%"><?php  echo "<i class=role>".$worker['role']."</i>"; if(!empty($worker['role']) && (!empty($worker['name']) or !empty($worker['surname']) or !empty($worker['middlename']))){echo "<br style='line-height: 40px;'>";} echo "<b>".$worker['surname']."</b> ".$worker['name']." ".$worker['middlename'];?></td>
 		<?php $contacts = $db->query("SELECT * FROM ?n WHERE idWorker=?i",$table[3],$worker['id']);
 		$department = $db->getRow("SELECT * FROM ?n WHERE id=?i",$table[1],$worker['idDepartment']);
 		$organization = $db->getRow("SELECT * FROM ?n WHERE id=?i",$table[0],$department['idOrganization']);
 		?>
-		<td>
+		<td width="40%">
 			<table class="contactTable">
 				<?php
 				$types = $db->query("SELECT * FROM ?n",$table[4]);
@@ -58,7 +59,7 @@ if(!empty($result)){
 						foreach ($contacts as $contact) {
 							if ($type['id']==$contact['idType']) {
 								echo "<tr>";
-								echo "<td  class='sfield' onclick=copy(".$contact['id'].") id=b".$contact['id']."><input readonly id=i".$contact['id']." value=".$contact['value']."><span>".$contact['value']."</span>";
+								echo "<td  class='sfield' onclick=copy(".$contact['id'].") id=b".$contact['id']."><input readonly id=i".$contact['id']." value=".phone($contact['value'])."><span>".phone($contact['value'])."</span>";
 								if (!empty($contact['type'])) echo " (".$contact['type'].")";
 								echo "</td>";
 								echo "</tr>";
