@@ -1,5 +1,5 @@
 <?php
-$user = "contact";
-$pass = "contact";
-$base = "contact";
+$user = "contact"; //имя пользователя для подключения к БД
+$pass = "contact"; //пароль
+$base = "contact"; //имя базы
 ?>
