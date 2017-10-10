@@ -1,7 +1,7 @@
 <?php
 include_once '../functions/safemysql.class.php';	
 include_once '../functions/params.php';
-include_once '../functions/phoneFormat.php';
+include_once '../functions/phones.php';
 $db = new SafeMysql(array('user'=>$user, 'pass'=>$pass, 'db'=>$base, 'charset'=>'utf8'));
 $table = array("organizations","departments","workers","contacts","types");
 if(isset($_GET['id'])){
