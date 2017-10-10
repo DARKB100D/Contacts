@@ -60,6 +60,7 @@ function deleteButton(th){
 	if(del[3]['value']!=="" && del[0]['value']!=="") {
 		window.delArray.push(del[3]['value']);
 	}
+	$("#submitForm").removeAttr("disabled");
 }
 
 function newRow(id){

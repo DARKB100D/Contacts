@@ -4,7 +4,7 @@ if (isset($_POST['id'])) {
 	include_once '../functions/params.php';
 	$db = new SafeMysql(array('user'=>$user, 'pass'=>$pass, 'db'=>$base, 'charset'=>'utf8'));
 	$type = $db->getRow("SELECT * FROM types WHERE id=?i", $_POST['id']);
-	print '<form class="mdl-grid mdl-grid--no-spacing contactForm" onsubmit="return false;">';
+	print '<form class="mdl-grid mdl-grid--no-spacing contactForm" onsubmit="return false;"  onkeydown=$("#submitForm").removeAttr("disabled");>';
 	echo "<div class='mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-typography--text-center mdl-cell--middle'></div>";
 	echo "<div class='mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-typography--text-center'>";
 	print '<div class="mdl-grid mdl-grid--field">';
