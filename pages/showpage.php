@@ -197,15 +197,15 @@
 		<button type="button" class="mdl-button close">Отмена</button>
 	</div>
 </dialog>
-<!-- <script type="text/javascript" src="../js/material.min.js" defer></script>	
+<script type="text/javascript" src="../js/material.min.js" defer></script>	
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../js/dialog-polyfill.min.js"></script>
 <script type="text/javascript" src="../js/jquery.mark.min.js"></script>
 <script type="text/javascript" src="../js/sidebar.js"></script>
 <script type="text/javascript" src="../js/checkbox.js"></script>
 <script type="text/javascript" src="../js/filter.js"></script>
-<script type="text/javascript" src="../js/other.js"></script> -->
-<script type="text/javascript" src="../js/one.min.js"></script>
+<script type="text/javascript" src="../js/other.js"></script>
+<!-- <script type="text/javascript" src="../js/one.min.js"></script> -->
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#addButton").click(function() {

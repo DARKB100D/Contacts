@@ -1,6 +1,15 @@
 function phoneCheck(inp) {
-	inp.value = inp.value.replace(/[^\d]*/g, '');
+	value = inp.value;
+	inp.value = value.replace(/[^\d]*/g, '');
 	// inp.value = inp.value.replace(/[^\d+()-]*/g, '');
+	if (value.length == 10 && dnr_number(value)) $(inp).val("38"+value);
+	
+}
+function dnr_number(inp){
+	var arr = ["050","095","066","099","071","062"];
+	for (var i = arr.length - 1; i >= 0; i--) {
+		if (value.substring(0,3) == arr[i]) return true;
+	}
 }
 function emailCheck(inp) {
 	inp.value = inp.value.replace(/\s*/g,'');

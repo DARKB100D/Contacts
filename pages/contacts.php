@@ -93,9 +93,10 @@ if(isset($_GET['id'])){
 													echo "<td>";
 													echo "<table class='bordertable'>";
 													foreach ($contacts as $contact) {
+														$conValue = ($contact['idType']==2) ? phone($contact['value']) : $contact['value'];
 														if ($type['id']==$contact['idType']) {
 															echo "<tr>";
-															echo "<td  class='sfield' onclick=copy(".$contact['id'].") id=b".$contact['id']."><input readonly class='printHide' id=i".$contact['id']." value='".phone($contact['value'])."'><span>".phone($contact['value'])."</span>";
+															echo "<td  class='sfield' onclick=copy(".$contact['id'].") id=b".$contact['id']."><input readonly class='printHide' id=i".$contact['id']." value='".$conValue."'><span>".$conValue."</span>";
 															if (!empty($contact['type'])) echo " (".$contact['type'].")";
 															echo "</td>";
 															echo "</tr>";
