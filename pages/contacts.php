@@ -95,7 +95,7 @@ if(isset($_GET['id'])){
 													foreach ($contacts as $contact) {
 														if ($contact['idType']==2) {
 															$conValue = phone($contact['value']);
-															$conValue = (strlen($conValue) > 5) ? "+".$conValue : $conValue;
+															$conValue = (strlen($contact['value']) > 7) ? "+".$conValue : $conValue;
 														} else {
 															$conValue = $contact['value'];
 														}
