@@ -856,7 +856,7 @@ $phoneCodes=Array(
 //         'exceptions_max'=>5,
 //         'exceptions_min'=>1
 //     ),
-'38'=>Array(
+'380'=>Array(
         'name'=>'Ukraine',
         'cityCodeLength'=>4,
         'zeroHack'=>true,

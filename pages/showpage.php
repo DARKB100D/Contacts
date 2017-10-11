@@ -203,6 +203,8 @@
 <script type="text/javascript" src="../js/jquery.mark.min.js"></script>
 <script type="text/javascript" src="../js/sidebar.js"></script>
 <script type="text/javascript" src="../js/checkbox.js"></script>
+<script type="text/javascript" src="../js/jquery.inputmask-multi.min.js"></script>
+<script type="text/javascript" src="../js/jquery.inputmask.bundle.js"></script>
 <script type="text/javascript" src="../js/filter.js"></script>
 <script type="text/javascript" src="../js/other.js"></script>
 <!-- <script type="text/javascript" src="../js/one.min.js"></script> -->

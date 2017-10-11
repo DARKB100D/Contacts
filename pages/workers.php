@@ -1,6 +1,7 @@
 <?php
 include_once '../functions/safemysql.class.php';	
 include_once '../functions/params.php';
+include_once '../functions/phones.php';
 $db = new SafeMysql(array('user'=>$user, 'pass'=>$pass, 'db'=>$base, 'charset'=>'utf8'));
 $table = array("organizations","departments","workers","contacts","types");
 $val = $_GET['val'];
@@ -15,17 +16,17 @@ $prevCol = $prevdatacol['fieldName'];
 $prevHref = "?idt=".$previdt."&val=".$val;
 ?>
 <style type="text/css">
-	.deleteButton {
-		position: absolute;
-		right: 40px;
-		top:30px;
-		color: white;
-	}
-	.newRowButton {
-		position: absolute;
-		right: 15px;
-		bottom: 35px;
-	}
+.deleteButton {
+	position: absolute;
+	right: 40px;
+	top:30px;
+	color: white;
+}
+.newRowButton {
+	position: absolute;
+	right: 15px;
+	bottom: 35px;
+}
 </style>
 <?php 
 $department = $db->getRow("SELECT * FROM departments WHERE id=?i",$val);
@@ -84,6 +85,12 @@ $organization = $db->getRow("SELECT * FROM organizations WHERE id=?i",$departmen
 		$typeisshow = false;
 		if(isset($contacts)){
 			foreach ($contacts as $contact) {
+				if ($contact['idType']==2) {
+					$conValue = phone($contact['value']);
+					$conValue = (strlen($conValue) > 5) ? "+".$conValue : $conValue;
+				} else {
+					$conValue = $contact['value'];
+				}
 				if ($type['id']==$contact['idType']) {
 					echo "<form class='mdl-grid mdl-grid--no-spacing contactForm' onsubmit='return false;'>";
 					if($icon==true) { 
@@ -93,7 +100,7 @@ $organization = $db->getRow("SELECT * FROM organizations WHERE id=?i",$departmen
 						print '<div class="mdl-grid mdl-grid--field">';
 						print '<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">';
 						print '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-textfield--full-width">';
-						print '<input class="mdl-textfield__input" type="'.$type['icon'].'" id="'.$contact['id'].'" name="value" value="'.$contact['value'].'" onkeyup="'.$type['icon'].'Check(this)"  onblur="checkEmpty(this)" >';
+						print '<input class="mdl-textfield__input" type="'.$type['icon'].'" id="'.$contact['id'].'" name="value" value="'.$conValue.'" onkeyup="'.$type['icon'].'Check(this)"  onblur="checkEmpty(this)" >';
 						print '<label class="mdl-textfield__label" for="'.$contact['id'].'">'.$type['name'].'</label>';
 						print '</div>';
 						print '</div>';
@@ -106,7 +113,7 @@ $organization = $db->getRow("SELECT * FROM organizations WHERE id=?i",$departmen
 						print '<div class="mdl-grid mdl-grid--field">';
 						print '<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">';
 						print '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label  mdl-textfield--full-width">';
-						print '<input class="mdl-textfield__input" type="'.$type['icon'].'" name="value" id="'.$contact['id'].'" value="'.$contact['value'].'" onblur="checkEmpty(this)" onkeyup="'.$type['icon'].'Check(this)">';
+						print '<input class="mdl-textfield__input" type="'.$type['icon'].'" name="value" id="'.$contact['id'].'" value="'.$conValue.'" onblur="checkEmpty(this)" onkeyup="'.$type['icon'].'Check(this)">';
 						print '<label class="mdl-textfield__label" for="'.$contact['id'].'">'.$type['name'].'</label>';
 						print '</div>';
 						print '</div>';											
