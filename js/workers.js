@@ -17,6 +17,8 @@ function checkEmpty (th) {
 		var rem=$(th).parent().parent();
 		deleteButton(rem);
 	}
+	//format phone
+	maskState = '';
 }
 var dialog = document.querySelector('dialog');
 if (! dialog.showModal) {
