@@ -100,7 +100,7 @@ $organization = $db->getRow("SELECT * FROM organizations WHERE id=?i",$departmen
 						print '<div class="mdl-grid mdl-grid--field">';
 						print '<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">';
 						print '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-textfield--full-width">';
-						print '<input class="mdl-textfield__input" type="'.$type['icon'].'" id="'.$contact['id'].'" name="value" value="'.$conValue.'" onkeyup="'.$type['icon'].'Check(this)"  onblur="checkEmpty(this)" >';
+						print '<input class="mdl-textfield__input" type="'.$type['icon'].'" id="'.$contact['id'].'" name="value" value="'.$conValue.'" onkeydown="'.$type['icon'].'Check(this)" onfocus="'.$type['icon'].'Check(this)" onblur="checkEmpty(this)" >';
 						print '<label class="mdl-textfield__label" for="'.$contact['id'].'">'.$type['name'].'</label>';
 						print '</div>';
 						print '</div>';
@@ -113,7 +113,7 @@ $organization = $db->getRow("SELECT * FROM organizations WHERE id=?i",$departmen
 						print '<div class="mdl-grid mdl-grid--field">';
 						print '<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">';
 						print '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label  mdl-textfield--full-width">';
-						print '<input class="mdl-textfield__input" type="'.$type['icon'].'" name="value" id="'.$contact['id'].'" value="'.$conValue.'" onblur="checkEmpty(this)" onkeyup="'.$type['icon'].'Check(this)">';
+						print '<input class="mdl-textfield__input" type="'.$type['icon'].'" name="value" id="'.$contact['id'].'" value="'.$conValue.'" onblur="checkEmpty(this)" onfocus="'.$type['icon'].'Check(this)" onkeydown="'.$type['icon'].'Check(this)">';
 						print '<label class="mdl-textfield__label" for="'.$contact['id'].'">'.$type['name'].'</label>';
 						print '</div>';
 						print '</div>';											
@@ -141,7 +141,7 @@ $organization = $db->getRow("SELECT * FROM organizations WHERE id=?i",$departmen
 			print '<div class="mdl-grid mdl-grid--field">';
 			print '<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">';
 			print '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label  mdl-textfield--full-width">';
-			print '<input class="mdl-textfield__input" name="value" type="'.$type['icon'].'" onkeyup="'.$type['icon'].'Check(this)" onblur="checkEmpty(this)">';
+			print '<input class="mdl-textfield__input" name="value" type="'.$type['icon'].'" onkeydown="'.$type['icon'].'Check(this)" onblur="checkEmpty(this)">';
 			print '<label class="mdl-textfield__label">'.$type['name'].'</label>';
 			print '</div>';
 			print '</div>';
