@@ -98,5 +98,4 @@ function location_onCheck() {
 	
 }
 function card_giftcardCheck(){
-	
 }

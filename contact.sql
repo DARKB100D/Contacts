@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.2
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Окт 03 2017 г., 06:07
--- Версия сервера: 10.2.6-MariaDB
--- Версия PHP: 7.1.8
+-- Хост: 127.0.0.1
+-- Время создания: Окт 18 2017 г., 11:16
+-- Версия сервера: 10.1.25-MariaDB
+-- Версия PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- База данных: `contact`
 --
-CREATE DATABASE IF NOT EXISTS `contact` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `contact`;
 
 -- --------------------------------------------------------
 
@@ -31,11 +29,11 @@ USE `contact`;
 --
 
 CREATE TABLE `contacts` (
-  `id` smallint(4) NOT NULL,
-  `idType` smallint(4) NOT NULL,
+  `id` int(11) NOT NULL,
+  `idType` int(11) NOT NULL,
   `value` varchar(255) NOT NULL,
-  `idWorker` smallint(4) NOT NULL,
-  `type` varchar(64) NOT NULL
+  `idWorker` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -68,9 +66,9 @@ DELIMITER ;
 --
 
 CREATE TABLE `departments` (
-  `id` smallint(4) NOT NULL,
-  `name` varchar(64) NOT NULL,
-  `idOrganization` smallint(4) NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `idOrganization` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -97,7 +95,7 @@ CREATE TABLE `fields` (
   `id` int(11) NOT NULL,
   `idTable` int(11) NOT NULL,
   `fieldName` varchar(25) NOT NULL,
-  `fieldShowName` varchar(25) NOT NULL,
+  `fieldShowName` varchar(64) NOT NULL,
   `type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -107,11 +105,11 @@ CREATE TABLE `fields` (
 
 INSERT INTO `fields` (`id`, `idTable`, `fieldName`, `fieldShowName`, `type`) VALUES
 (1, 1, 'name', 'Название организации', 0),
-(2, 2, 'name', 'Название отдела', 0),
+(2, 2, 'name', 'Название отдела / подразделения', 0),
 (3, 3, 'surname', 'Фамилия', 0),
 (4, 3, 'name', 'Имя', 0),
 (5, 3, 'middlename', 'Отчество', 0),
-(7, 3, 'idDepartment', 'Отдел', 1),
+(7, 3, 'idDepartment', 'Отдел / Подразделение', 1),
 (9, 2, 'idOrganization', 'Организация', 1),
 (10, 4, 'idWorker', 'Сотрудник', 1),
 (13, 1, 'id', 'id', 1),
@@ -145,8 +143,8 @@ CREATE TABLE `log` (
 --
 
 CREATE TABLE `organizations` (
-  `id` smallint(4) NOT NULL,
-  `name` varchar(64) NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -173,7 +171,7 @@ CREATE TABLE `search` (
   `id` int(11) DEFAULT NULL,
   `realId` int(11) DEFAULT NULL,
   `tableId` int(11) DEFAULT NULL,
-  `text` text DEFAULT NULL
+  `text` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -206,7 +204,7 @@ INSERT INTO `tables` (`id`, `tableName`, `tableShowName`) VALUES
 --
 
 CREATE TABLE `types` (
-  `id` smallint(4) NOT NULL,
+  `id` int(11) NOT NULL,
   `icon` varchar(120) NOT NULL,
   `old_icon` varchar(120) NOT NULL,
   `name` varchar(20) NOT NULL
@@ -219,7 +217,8 @@ CREATE TABLE `types` (
 INSERT INTO `types` (`id`, `icon`, `old_icon`, `name`) VALUES
 (1, 'email', '<i class=\"fa fa-envelope-o\" aria-hidden=\"true\"></i>', 'Почта'),
 (2, 'phone', '<i class=\"fa fa-phone\" aria-hidden=\"true\"></i>', 'Телефон'),
-(3, 'location_on', '<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>', 'Адрес');
+(3, 'location_on', '<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>', 'Адрес'),
+(4, 'card_giftcard', '<i class=\"fa fa-gift\" aria-hidden=\"true\"></i>', 'День рождения');
 
 -- --------------------------------------------------------
 
@@ -229,11 +228,11 @@ INSERT INTO `types` (`id`, `icon`, `old_icon`, `name`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `login` varchar(30) NOT NULL,
+  `login` varchar(64) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `name` varchar(20) DEFAULT NULL,
-  `surname` varchar(35) DEFAULT NULL,
-  `middlename` varchar(35) DEFAULT NULL,
+  `name` varchar(64) DEFAULT NULL,
+  `surname` varchar(64) DEFAULT NULL,
+  `middlename` varchar(64) DEFAULT NULL,
   `hash` varchar(32) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -242,7 +241,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `middlename`, `hash`) VALUES
-(1, 'admin', '$2y$10$Ijn3j9mna3gKaNSBaAMuwuiLreihv9CzLP4MQY6nFK4GBxNp3FVR.', 'admin', 'admin', 'admin', '74eed6d6d71b3a25e76fcc33ada39704');
+(1, 'admin', '$2y$10$Ijn3j9mna3gKaNSBaAMuwuiLreihv9CzLP4MQY6nFK4GBxNp3FVR.', 'admin', 'admin', 'admin', '36408aa9814e41ea18875290963b26fe');
 
 -- --------------------------------------------------------
 
@@ -251,11 +250,11 @@ INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `middlename`,
 --
 
 CREATE TABLE `workers` (
-  `id` smallint(4) NOT NULL,
-  `surname` varchar(20) DEFAULT NULL,
-  `name` varchar(20) DEFAULT NULL,
-  `middlename` varchar(20) DEFAULT NULL,
-  `idDepartment` smallint(4) NOT NULL,
+  `id` int(11) NOT NULL,
+  `surname` varchar(64) DEFAULT NULL,
+  `name` varchar(64) DEFAULT NULL,
+  `middlename` varchar(64) DEFAULT NULL,
+  `idDepartment` int(11) NOT NULL,
   `role` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -377,12 +376,12 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT для таблицы `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` smallint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 --
 -- AUTO_INCREMENT для таблицы `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` smallint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT для таблицы `fields`
 --
@@ -392,12 +391,12 @@ ALTER TABLE `fields`
 -- AUTO_INCREMENT для таблицы `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT для таблицы `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `id` smallint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `tables`
 --
@@ -407,17 +406,17 @@ ALTER TABLE `tables`
 -- AUTO_INCREMENT для таблицы `types`
 --
 ALTER TABLE `types`
-  MODIFY `id` smallint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT для таблицы `workers`
 --
 ALTER TABLE `workers`
-  MODIFY `id` smallint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
