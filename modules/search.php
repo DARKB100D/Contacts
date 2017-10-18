@@ -1,7 +1,7 @@
 <?php 
 include_once '../functions/safemysql.class.php';	
 include_once '../functions/params.php';
-include_once '../functions/phoneFormat.php';
+include_once '../functions/phones.php';
 $db = new SafeMysql(array('user'=>$user, 'pass'=>$pass, 'db'=>$base, 'charset'=>'utf8'));
 $table = array("organizations","departments","workers","contacts","types");
 $input = substr($_POST['input'], 0, 64);
@@ -57,9 +57,15 @@ if(!empty($result)){
 						echo "<td>";
 						echo "<table class='bordertable'>";
 						foreach ($contacts as $contact) {
+							if ($contact['idType']==2) {
+								$conValue = phone($contact['value']);
+								$conValue = (strlen($contact['value']) > 7) ? "+".$conValue : $conValue;
+							} else {
+								$conValue = $contact['value'];
+							}
 							if ($type['id']==$contact['idType']) {
 								echo "<tr>";
-								echo "<td  class='sfield' onclick=copy(".$contact['id'].") id=b".$contact['id']."><input readonly id=i".$contact['id']." value='".phone($contact['value'])."'><span>".phone($contact['value'])."</span>";
+								echo "<td  class='sfield' onclick=copy(".$contact['id'].") id=b".$contact['id']."><input readonly id=i".$contact['id']." value='".$conValue."'><span>".$conValue."</span>";
 								if (!empty($contact['type'])) echo " (".$contact['type'].")";
 								echo "</td>";
 								echo "</tr>";
