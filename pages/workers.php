@@ -165,7 +165,7 @@ $organization = $db->getRow("SELECT * FROM organizations WHERE id=?i",$departmen
 	?>
 </div>
 <div class="mdl-dialog__actions">
-	<button disabled id="submitForm" class="mdl-button" onclick="submitForms(<?php echo $id ?>)">Сохранить</button>
+	<button disabled id="submitForm" class="mdl-button" onclick="submitForms(<?php if(!empty($id)) echo $id ?>)">Сохранить</button>
 	<button type="button" class="mdl-button close">Отмена</button>
 </div>
 <?php 

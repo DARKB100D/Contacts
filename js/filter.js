@@ -97,3 +97,6 @@ function names(inp) {
 function location_onCheck() {
 	
 }
+function card_giftcardCheck(){
+	
+}
