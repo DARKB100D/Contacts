@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Окт 18 2017 г., 11:16
--- Версия сервера: 10.1.25-MariaDB
--- Версия PHP: 7.1.7
+-- Хост: localhost
+-- Время создания: Окт 19 2017 г., 07:20
+-- Версия сервера: 10.2.9-MariaDB
+-- Версия PHP: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -171,7 +171,7 @@ CREATE TABLE `search` (
   `id` int(11) DEFAULT NULL,
   `realId` int(11) DEFAULT NULL,
   `tableId` int(11) DEFAULT NULL,
-  `text` text
+  `text` text DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -241,7 +241,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `middlename`, `hash`) VALUES
-(1, 'admin', '$2y$10$Ijn3j9mna3gKaNSBaAMuwuiLreihv9CzLP4MQY6nFK4GBxNp3FVR.', 'admin', 'admin', 'admin', '36408aa9814e41ea18875290963b26fe');
+(1, 'admin', '$2y$10$Ijn3j9mna3gKaNSBaAMuwuiLreihv9CzLP4MQY6nFK4GBxNp3FVR.', 'admin', 'admin', 'admin', '840259b609b356d76db4f56809d72d16');
 
 -- --------------------------------------------------------
 
@@ -278,8 +278,8 @@ SELECT idOrganization INTO @organizationId FROM departments WHERE `id`=NEW.`idDe
 SELECT name INTO @organizationName FROM organizations WHERE`id`=@organizationId;
 
 INSERT INTO search (`id`,`realId`,`tableId`,`text`) VALUES
+    (NEW.`id`, NEW.`id`, 3, NEW.`surname`),
     (NEW.`id`, NEW.`id`, 3, NEW.`name`),
-    (NEW.`id`, NEW.`id`, 3, NEW.`surname`), 
     (NEW.`id`, NEW.`id`, 3, NEW.`middlename`),
     (NEW.`id`, NEW.`id`, 3, NEW.`role`),
     (NEW.`id`, NEW.`idDepartment`, 2, @departmentName), 
@@ -291,11 +291,11 @@ DELIMITER $$
 CREATE TRIGGER `update` AFTER UPDATE ON `workers` FOR EACH ROW BEGIN
   DELETE FROM search WHERE `id`=OLD.`id` AND `tableId`=3;
   INSERT INTO search (`id`,`realId`,`tableId`,`text`) VALUES
-    (NEW.`id`, NEW.`id`, 3, NEW.`name`),
-    (NEW.`id`, NEW.`id`, 3, NEW.`surname`), 
+    (NEW.`id`, NEW.`id`, 3, NEW.`surname`),
+    (NEW.`id`, NEW.`id`, 3, NEW.`name`),    
     (NEW.`id`, NEW.`id`, 3, NEW.`middlename`),
     (NEW.`id`, NEW.`id`, 3, NEW.`role`);
-	END
+END
 $$
 DELIMITER ;
 
@@ -376,47 +376,56 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT для таблицы `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=312;
+
 --
 -- AUTO_INCREMENT для таблицы `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
 --
 -- AUTO_INCREMENT для таблицы `fields`
 --
 ALTER TABLE `fields`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
 --
 -- AUTO_INCREMENT для таблицы `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT для таблицы `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT для таблицы `tables`
 --
 ALTER TABLE `tables`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT для таблицы `types`
 --
 ALTER TABLE `types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT для таблицы `workers`
 --
 ALTER TABLE `workers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
+
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
