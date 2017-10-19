@@ -214,3 +214,10 @@ table input {
 	font-size: smaller;
 	font-style: italic;
 }
+#showall{
+	padding: 0;
+}
+#showallcontainer {
+	width: 100%;
+	margin: 8px 0;
+}

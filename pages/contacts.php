@@ -58,7 +58,7 @@ if(isset($_GET['id'])){
 						<button type="button" class="mdl-snackbar__action"></button>
 					</div>
 					<div class="mdl-grid mdl-card">
-						<div class="mdl-cell mdl-cell--12-col printHide"><button class="mdl-button mdl-js-button" onclick='showall(1);' id='showall'>Показать все</button></div>
+						<div class="mdl-cell mdl-cell--12-col printHide" id="showallcontainer"><button class="mdl-button mdl-js-button" onclick='showall(1);' id='showall'>Показать все</button></div>
 						<?php 
 						$departments = $db ->query("SELECT * FROM ?n WHERE idOrganization=?i or idOrganization = 0 ORDER BY name ASC",$table[1],$idOrganization);
 						foreach ($departments as $department) {
@@ -87,7 +87,7 @@ if(isset($_GET['id'])){
 												}
 												if ($yes==1) {
 													echo "<tr>";
-													echo "<td width='1em'>";
+													echo "<td max-width='1em'>";
 													echo $type['old_icon'];
 													echo "</td>";
 													echo "<td>";
