@@ -237,7 +237,7 @@
 		}
 		else {
 			$.ajax({
-				url:"../pages/workers.php",
+				url:"../modules/workers.php",
 				type: 'GET',
 				data: {
 					val: val,
