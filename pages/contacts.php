@@ -87,7 +87,7 @@ if(isset($_GET['id'])){
 												}
 												if ($yes==1) {
 													echo "<tr>";
-													echo "<td max-width='1em'>";
+													echo "<td width='1em'>";
 													echo $type['old_icon'];
 													echo "</td>";
 													echo "<td>";
