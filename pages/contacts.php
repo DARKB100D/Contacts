@@ -16,6 +16,7 @@ if(isset($_GET['id'])){
 		<head>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=0.8">
+			<meta name="format-detection" content="telephone=no">
 			<title><?php echo $organization['name']; ?></title>
 			<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 			<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
@@ -103,7 +104,7 @@ if(isset($_GET['id'])){
 														if ($type['id']==$contact['idType']) {
 															echo "<tr>";
 															echo "<td  class='sfield' onclick=copy(".$contact['id'].") id=b".$contact['id']."><input readonly class='printHide' id=i".$contact['id']." value='".$conValue."'><span>".$conValue."</span>";
-															if (!empty($contact['type'])) echo " (".$contact['type'].")";
+															if (!empty($contact['type'])) echo "<span> (".$contact['type'].")</span>";
 															echo "</td>";
 															echo "</tr>";
 														}
