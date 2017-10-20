@@ -80,13 +80,13 @@ button {
 	cursor: pointer;
 }
 
-table input {
-	-webkit-user-select: none;
+/*table input {*/
+	/*-webkit-user-select: none;*/
 	/* user-select -- это нестандартное свойство */
-	-moz-user-select: none;
+	/*-moz-user-select: none;*/
 	/* поэтому нужны префиксы */
-	-ms-user-select: none;
-}
+	/*-ms-user-select: none;*/
+/*\\}*/
 .liho:hover {
 	background-color:  #f1f1f1;
 	cursor: pointer

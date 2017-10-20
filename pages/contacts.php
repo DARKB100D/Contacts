@@ -230,11 +230,24 @@ if(isset($_GET['id'])){
 					}
 				});
 			}
+			function clearPageSelection()
+			{
+				if (window.getSelection) {
+				if (window.getSelection().empty) { // Chrome
+					window.getSelection().empty();
+				} else if (window.getSelection().removeAllRanges) { // Firefox
+					window.getSelection().removeAllRanges();
+				}
+				} else if (document.selection) { // IE?
+					document.selection.empty();
+				}
+			} 
 			function copy(content) {
 				var input =  document.getElementById('i'+content),
 				button = document.getElementById('b'+content);
 				input.select();
 				document.execCommand("copy");
+				clearPageSelection();
 				new Noty({
 					text: 'Скопировано в буфер обмена: <br><b style="color:yellow"">'+input.value+'</b>',
 					timeout: 1000,
