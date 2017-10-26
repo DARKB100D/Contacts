@@ -152,7 +152,7 @@
 		$(function() {
 			var $input = $('#globalSearch'),
 			page = 0,
-			limit = 5,
+			limit = 15,
 			delay = 200;
 			$input.on('keyup',function(event){
 				if ($('#liveSearch').is(':checked')) {

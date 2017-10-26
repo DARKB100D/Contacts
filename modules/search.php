@@ -4,12 +4,19 @@ include_once '../functions/params.php';
 include_once '../functions/phones.php';
 $db = new SafeMysql(array('user'=>$user, 'pass'=>$pass, 'db'=>$base, 'charset'=>'utf8'));
 $table = array("organizations","departments","workers","contacts","types");
+$DEBUG = false;
 $input = substr($_POST['input'], 0, 64);
-$input = preg_replace("/[^\w\x7F-\xFF\s]/", "", $input);
+$input = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $input);
+if($DEBUG) echo $input;
+$pattern = '/([а-яА-ЯЁёa-zA-Z0-9]+)/u'; 
+preg_match_all($pattern, $input, $input);
+if($DEBUG) print_r($input[0]);
+// if (($logic!="AND") && ($logic!="OR"))
+//   $logic = "OR";
 $limit = ($_POST['page']==0) ? "LIMIT ".$_POST['limit'] : "LIMIT ". $_POST['page']*$_POST['limit']. ", ".$_POST['limit'];
-$query = "SELECT `id` FROM search WHERE `text` LIKE '%".$input."%' GROUP BY `id` ".$limit;
+$query = "SELECT `id` FROM search WHERE `text` REGEXP '".implode("|", $input[0])."' GROUP BY `id` ".$limit;
 $result = $db->getCol($query);
-$query = "SELECT `id` FROM search WHERE `text` LIKE '%".$input."%' GROUP BY `id`";
+$query = "SELECT `id` FROM search WHERE `text` REGEXP '".implode("|", $input[0])."' GROUP BY `id`";
 $sresult = $db->getCol($query);
 if(!empty($result)){
 	$ids = implode(",", $result);
