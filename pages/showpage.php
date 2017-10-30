@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=0.8">
 	<title>Список организаций</title>
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!-- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="../css/material.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+	<!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="../css/dialog-polyfill.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="../css/style.min.css">

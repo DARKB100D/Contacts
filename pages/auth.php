@@ -40,10 +40,10 @@ if(isset($_POST['submit']))
 	<meta charset="utf-8">
 	<title>Вход</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-	<link rel="stylesheet" type="text/css" href="../css/material.min.css" media="not print">
-	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+<!-- 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="../css/material.min.css" media="not print"> -->
+	<link rel="stylesheet" type="text/css" href="../css/style.min.css"/>
 	<style type="text/css">
 	.logincard {
 		max-width: 350px;
