@@ -33,6 +33,7 @@ if(isset($_POST['submit']))
 		$message='Вы ввели неправильный логин/пароль';
 	}
 }
+$db = NULL;
 ?>
 <!DOCTYPE html>
 <html>
