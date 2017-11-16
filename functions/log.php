@@ -83,7 +83,7 @@ function flog($operation) {
 			"idTable" =>$table['id'],
 			"h2"=> $h1,
 			"idUser"=>$_COOKIE['id']
-			);
+		);
 		$db->query("INSERT INTO log SET ?u",$logs);
 		$log = $db->insertId();
 		umask(0);
@@ -128,5 +128,14 @@ function way($idt,$way,$val) {
 		$tmp .= $way[$i];
 	}
 	return $tmp; 
+}
+
+function removeDirectory($dir) {
+	if ($objs = glob($dir."/*")) {
+		foreach($objs as $obj) {
+			is_dir($obj) ? removeDirectory($obj) : unlink($obj);
+		}
+	}
+	rmdir($dir);
 }
 ?>
